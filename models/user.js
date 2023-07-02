@@ -1,11 +1,17 @@
 const { Model, DataTypes } = require("sequelize");
 //importing sequilize from connections
-const connection = require("../config/connection");
+const sequelize = require("../config/connection");
 
 class User extends Model {}
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
        
     username: {
       type: DataTypes.STRING,
@@ -28,7 +34,7 @@ User.init(
     }
   },
   {
-    sequelize: connection,
+    sequelize: sequelize,
     timestamps: false,
     freezeTableName: true,
     modelName: 'user', 

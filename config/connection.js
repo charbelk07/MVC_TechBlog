@@ -1,7 +1,7 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 require('dotenv').config();
-
-const sequelizeConnection = new sequelize (
+    let sequelize;
+    sequelize = new Sequelize (
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PW,
@@ -11,4 +11,4 @@ const sequelizeConnection = new sequelize (
         port: 3306
     }
 )
-module.export = sequelize;
+module.exports = sequelize;

@@ -1,33 +1,33 @@
 //imports models to create the database connection
-const user = require('./user');
-const post = require('./post');
-const comment = require('./comment');
+const User = require('./user');
+const Post = require('./post');
+const Comment = require('./comment');
 
-user.hasMany(post,{
+User.hasMany(Post,{
     foreignKey: 'userId',
     onDelete: 'CASCADE'
 })
 
-post.belongsTo(user,{
+Post.belongsTo(User,{
     foreignKey:'userId'
 })
   
-user.hasMany(comment,{
+User.hasMany(Comment,{
     foreignKey: 'userId',
     onDelete: 'CASCADE'
 })
 
-comment.belongsTo(user,{
+Comment.belongsTo(User,{
     foreignKey:'userId'
 }) 
 
-post.hasMany(comment,{
+Post.hasMany(Comment,{
     foreignKey: 'postId',
     onDelete: 'CASCADE'
 })
 
-comment.belongsTo(post,{
+Comment.belongsTo(Post,{
     foreignKey: 'postId',
 })
 
-module.exports = {user, post, comment};
+module.exports = {User, Post, Comment};
